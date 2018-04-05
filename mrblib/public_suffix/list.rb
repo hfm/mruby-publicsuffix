@@ -37,7 +37,7 @@ module PublicSuffix
   #
   class List
 
-    DEFAULT_LIST_PATH = File.expand_path("../../data/list.txt", __dir__)
+    DEFAULT_LIST_PATH = File.expand_path('public_suffix_list.dat', File.dirname(__FILE__))
 
     # Gets the default rule list.
     #
