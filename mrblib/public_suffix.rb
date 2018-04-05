@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2009-2018 Simone Carletti <weppos@weppos.net>
 
-# PublicSuffix is a Ruby domain name parser based on the Public Suffix List.
+# mruby-publicsuffix is a mruby domain name parser based on the Public Suffix List.
 #
 # The [Public Suffix List](https://publicsuffix.org) is a cross-vendor initiative
 # to provide an accurate list of domain name suffixes.
