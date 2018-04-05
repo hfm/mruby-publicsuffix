@@ -1,6 +1,3 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __dir__)
-
-
 report = MemoryProfiler.report do
   PublicSuffix::List.default
 end

@@ -1,7 +1,6 @@
-
 # This test runs against the current PSL file and ensures
 # the definitions satisfies the test suite.
-class PslTest < Minitest::Test
+class PslTest < MTest::Unit::TestCase
 
   ROOT = File.expand_path("../../", __FILE__)
 
@@ -45,3 +44,5 @@ class PslTest < Minitest::Test
   end
 
 end
+
+MTest::Unit.new.mrbtest

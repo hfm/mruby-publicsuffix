@@ -1,5 +1,4 @@
-
-class PublicSuffix::ListTest < Minitest::Test
+class PublicSuffix::ListTest < MTest::Unit::TestCase
 
   def setup
     @list = PublicSuffix::List.new
@@ -236,3 +235,5 @@ LIST
   end
 
 end
+
+MTest::Unit.new.mrbtest

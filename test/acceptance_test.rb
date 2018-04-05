@@ -1,5 +1,4 @@
-
-class AcceptanceTest < Minitest::Test
+class AcceptanceTest < MTest::Unit::TestCase
 
   VALID_CASES = [
       ["example.com",             "example.com",        [nil, "example", "com"]],
@@ -124,3 +123,5 @@ class AcceptanceTest < Minitest::Test
   end
 
 end
+
+MTest::Unit.new.mrbtest

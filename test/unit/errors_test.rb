@@ -1,5 +1,4 @@
-
-class ErrorsTest < Minitest::Test
+class ErrorsTest < MTest::Unit::TestCase
 
   # Inherits from StandardError
   def test_error_inheritance
@@ -20,3 +19,5 @@ class ErrorsTest < Minitest::Test
   end
 
 end
+
+MTest::Unit.new.mrbtest

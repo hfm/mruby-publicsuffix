@@ -1,5 +1,4 @@
-
-class PublicSuffix::RuleTest < Minitest::Test
+class PublicSuffix::RuleTest < MTest::Unit::TestCase
 
   def test_factory_should_return_rule_normal
     rule = PublicSuffix::Rule.factory("com")
@@ -33,7 +32,7 @@ class PublicSuffix::RuleTest < Minitest::Test
 end
 
 
-class PublicSuffix::RuleBaseTest < Minitest::Test
+class PublicSuffix::RuleBaseTest < MTest::Unit::TestCase
 
   class ::PublicSuffix::Rule::Test < ::PublicSuffix::Rule::Base
   end
@@ -115,7 +114,7 @@ class PublicSuffix::RuleBaseTest < Minitest::Test
 end
 
 
-class PublicSuffix::RuleNormalTest < Minitest::Test
+class PublicSuffix::RuleNormalTest < MTest::Unit::TestCase
 
   def setup
     @klass = PublicSuffix::Rule::Normal
@@ -151,7 +150,7 @@ class PublicSuffix::RuleNormalTest < Minitest::Test
 end
 
 
-class PublicSuffix::RuleExceptionTest < Minitest::Test
+class PublicSuffix::RuleExceptionTest < MTest::Unit::TestCase
 
   def setup
     @klass = PublicSuffix::Rule::Exception
@@ -185,7 +184,7 @@ class PublicSuffix::RuleExceptionTest < Minitest::Test
 end
 
 
-class PublicSuffix::RuleWildcardTest < Minitest::Test
+class PublicSuffix::RuleWildcardTest < MTest::Unit::TestCase
 
   def setup
     @klass = PublicSuffix::Rule::Wildcard
@@ -217,3 +216,5 @@ class PublicSuffix::RuleWildcardTest < Minitest::Test
   end
 
 end
+
+MTest::Unit.new.mrbtest

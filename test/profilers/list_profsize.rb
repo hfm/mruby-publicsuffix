@@ -1,6 +1,3 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __dir__)
-
-
 list = PublicSuffix::List.default
 puts "#{list.size} rules:"
 

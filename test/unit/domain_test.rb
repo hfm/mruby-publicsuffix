@@ -1,5 +1,4 @@
-
-class PublicSuffix::DomainTest < Minitest::Test
+class PublicSuffix::DomainTest < MTest::Unit::TestCase
 
   def setup
     @klass = PublicSuffix::Domain
@@ -101,3 +100,5 @@ class PublicSuffix::DomainTest < Minitest::Test
   end
 
 end
+
+MTest::Unit.new.mrbtest

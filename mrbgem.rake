@@ -10,4 +10,6 @@ MRuby::Gem::Specification.new('mruby-publicsuffix') do |spec|
   else
     spec.add_dependency 'mruby-io'
   end
+
+  spec.add_test_dependency 'mruby-mtest'
 end

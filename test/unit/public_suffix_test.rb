@@ -1,5 +1,4 @@
-
-class PublicSuffixTest < Minitest::Test
+class PublicSuffixTest < MTest::Unit::TestCase
 
   def test_private_domains_enabled_by_default
     domain = PublicSuffix.parse("www.example.blogspot.com")
@@ -183,3 +182,5 @@ class PublicSuffixTest < Minitest::Test
   end
 
 end
+
+MTest::Unit.new.mrbtest
