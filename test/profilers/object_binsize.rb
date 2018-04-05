@@ -8,11 +8,11 @@
 # For certain cases, it works (TM).
 class ObjectBinsize
 
-  def measure(var, label: nil)
+  def measure(var, label = nil)
     dump(var, label: label)
   end
 
-  def report(var, label: nil, padding: 10)
+  def report(var, label = nil, padding = 10)
     file = measure(var, label: label)
 
     size = format_integer(file.size)
@@ -22,8 +22,8 @@ class ObjectBinsize
 
   private
 
-  def dump(var, **args)
-    file = Tempfile.new(args[:label].to_s)
+  def dump(var, args)
+    file = Tempfile.new(args.fetcth(:label).to_s)
     file.write(Marshal.dump(var))
     file
   ensure

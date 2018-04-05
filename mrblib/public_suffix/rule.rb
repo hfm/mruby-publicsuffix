@@ -113,7 +113,7 @@ module PublicSuffix
       #
       # @param  content [String] the content of the rule
       # @param  private [Boolean]
-      def self.build(content, private: false)
+      def self.build(content, private = false)
         new(value: content, private: private)
       end
 
@@ -121,7 +121,7 @@ module PublicSuffix
       #
       # @param  value [String]
       # @param  private [Boolean]
-      def initialize(value:, length: nil, private: false)
+      def initialize(value, length = nil, private = false)
         @value    = value.to_s
         @length   = length || @value.count(DOT) + 1
         @private  = private
@@ -219,7 +219,7 @@ module PublicSuffix
       #
       # @param  content [String] the content of the rule
       # @param  private [Boolean]
-      def self.build(content, private: false)
+      def self.build(content, private = false)
         new(value: content.to_s[2..-1], private: private)
       end
 
@@ -227,7 +227,7 @@ module PublicSuffix
       #
       # @param  value [String]
       # @param  private [Boolean]
-      def initialize(value:, length: nil, private: false)
+      def initialize(value, length = nil, private = false)
         super(value: value, length: length, private: private)
         length or @length += 1 # * counts as 1
       end
@@ -266,7 +266,7 @@ module PublicSuffix
       #
       # @param  content [String] the content of the rule
       # @param  private [Boolean]
-      def self.build(content, private: false)
+      def self.build(content, private = false)
         new(value: content.to_s[1..-1], private: private)
       end
 
@@ -321,7 +321,7 @@ module PublicSuffix
     #
     # @param  [String] content The rule content.
     # @return [PublicSuffix::Rule::*] A rule instance.
-    def self.factory(content, private: false)
+    def self.factory(content, private = false)
       case content.to_s[0, 1]
       when STAR
         Wildcard

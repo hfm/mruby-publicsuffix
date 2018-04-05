@@ -45,8 +45,8 @@ module PublicSuffix
     # of {PublicSuffix::List.default_list_content}, if required.
     #
     # @return [PublicSuffix::List]
-    def self.default(**options)
-      @default ||= parse(File.read(DEFAULT_LIST_PATH), options)
+    def self.default(options = {})
+      @default ||= parse(File.read(DEFAULT_LIST_PATH), options[:private_domains])
     end
 
     # Sets the default rule list to +value+.
@@ -64,7 +64,7 @@ module PublicSuffix
     # @param  string [#each_line] the list to parse
     # @param  private_domains [Boolean] whether to ignore the private domains section
     # @return [PublicSuffix::List]
-    def self.parse(input, private_domains: true)
+    def self.parse(input, private_domains = true)
       comment_token = "//".freeze
       private_token = "===BEGIN PRIVATE DOMAINS===".freeze
       section = nil # 1 == ICANN, 2 == PRIVATE
@@ -167,8 +167,8 @@ module PublicSuffix
     # @param  name [#to_s] the hostname
     # @param  default [PublicSuffix::Rule::*] the default rule to return in case no rule matches
     # @return [PublicSuffix::Rule::*]
-    def find(name, default: default_rule, **options)
-      rule = select(name, **options).inject do |l, r|
+    def find(name, default = default_rule, options = {})
+      rule = select(name, options.fetch(:ignore_private)).inject do |l, r|
         return r if r.class == Rule::Exception
         l.length > r.length ? l : r
       end
@@ -191,7 +191,7 @@ module PublicSuffix
     # @param  name [#to_s] the hostname
     # @param  ignore_private [Boolean]
     # @return [Array<PublicSuffix::Rule::*>]
-    def select(name, ignore_private: false)
+    def select(name, ignore_private = false)
       name = name.to_s
 
       parts = name.split(DOT).reverse!
