@@ -1,4 +1,3 @@
-require "test_helper"
 
 # This test runs against the current PSL file and ensures
 # the definitions satisfies the test suite.

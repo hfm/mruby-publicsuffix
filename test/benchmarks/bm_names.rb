@@ -1,4 +1,3 @@
-require 'benchmark/ips'
 
 STRING = "www.subdomain.example.com"
 ARRAY  = %w(

@@ -4,12 +4,6 @@
 #
 # Copyright (c) 2009-2018 Simone Carletti <weppos@weppos.net>
 
-require_relative "public_suffix/domain"
-require_relative "public_suffix/version"
-require_relative "public_suffix/errors"
-require_relative "public_suffix/rule"
-require_relative "public_suffix/list"
-
 # PublicSuffix is a Ruby domain name parser based on the Public Suffix List.
 #
 # The [Public Suffix List](https://publicsuffix.org) is a cross-vendor initiative

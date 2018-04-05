@@ -1,4 +1,3 @@
-require 'tempfile'
 
 # A very simple memory profiles that checks the full size of a variable
 # by serializing into a binary file.

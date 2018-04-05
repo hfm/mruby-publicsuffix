@@ -1,4 +1,3 @@
-require_relative "../../lib/public_suffix"
 
 NAME_SHORT  = "example.de"
 NAME_MEDIUM = "www.subdomain.example.de"
