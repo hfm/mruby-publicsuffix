@@ -15,12 +15,12 @@ class AcceptanceTest < MTest::Unit::TestCase
     VALID_CASES.each do |input, domain, results|
       parsed = PublicSuffix.parse(input)
       trd, sld, tld = results
-      assert_equal tld, parsed.tld, "Invalid tld for `#{name}`"
-      assert_equal sld, parsed.sld, "Invalid sld for `#{name}`"
+      assert_equal tld, parsed.tld, "Invalid tld for `#{input}`"
+      assert_equal sld, parsed.sld, "Invalid sld for `#{input}`"
       if trd.nil?
-        assert_nil parsed.trd, "Invalid trd for `#{name}`"
+        assert_nil parsed.trd, "Invalid trd for `#{input}`"
       else
-        assert_equal trd, parsed.trd, "Invalid trd for `#{name}`"
+        assert_equal trd, parsed.trd, "Invalid trd for `#{input}`"
       end
 
       assert_equal domain, PublicSuffix.domain(input)
