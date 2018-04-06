@@ -196,9 +196,7 @@ module PublicSuffix
     # @param  ignore_private [Boolean]
     # @return [Array<PublicSuffix::Rule::*>]
     def select(name, ignore_private = false)
-      name = name.to_s
-
-      parts = name.split(DOT).reverse!
+      parts = name.to_s.split(DOT).reverse
       index = 0
       query = parts[index]
       rules = []
