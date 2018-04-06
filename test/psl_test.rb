@@ -6,7 +6,7 @@ class PslTest < MTest::Unit::TestCase
 
   # rubocop:disable Security/Eval
   def self.tests
-    File.readlines(File.join(ROOT, "test/tests.txt")).map do |line|
+    File.open(File.join(ROOT, "test/tests.txt")).readlines.map do |line|
       line = line.strip
       next if line.empty?
       next if line.start_with?("//")
