@@ -15,5 +15,6 @@ MRuby::Gem::Specification.new('mruby-publicsuffix') do |spec|
     spec.add_dependency 'mruby-io'
   end
 
+  spec.test_rbfiles = Dir.glob("#{dir}/test/**/*_test.rb")
   spec.add_test_dependency 'mruby-mtest'
 end
