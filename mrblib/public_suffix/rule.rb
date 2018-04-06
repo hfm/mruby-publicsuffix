@@ -123,7 +123,9 @@ module PublicSuffix
       # @param  private [Boolean]
       def initialize(value, length = nil, private = false)
         @value    = value.to_s
-        @length   = length || @value.count(DOT) + 1
+        # TODO: [2018/04/06 MEMO] mruby doesn't have String#count yet
+        # @length   = length || @value.count(DOT) + 1
+        @length   = length || @value.each_char.each_cons(DOT.size).map(&:join).count(DOT) + 1
         @private  = private
       end
 
