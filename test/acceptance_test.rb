@@ -102,8 +102,9 @@ class AcceptanceTest < MTest::Unit::TestCase
       end
     end
     # test valid?
+    list = PublicSuffix::List.default
     INCLUDE_PRIVATE_CASES.each do |given, ignore_private, expected|
-      assert_equal !expected.nil?, PublicSuffix.valid?(given, ignore_private: ignore_private)
+      assert_equal !expected.nil?, PublicSuffix.valid?(given, list, list.default_rule, ignore_private)
     end
   end
 

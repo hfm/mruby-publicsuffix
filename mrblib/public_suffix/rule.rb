@@ -114,7 +114,7 @@ module PublicSuffix
       # @param  content [String] the content of the rule
       # @param  private [Boolean]
       def self.build(content, private = false)
-        new(value: content, private: private)
+        new(content, nil, private)
       end
 
       # Initializes a new rule.
@@ -222,7 +222,7 @@ module PublicSuffix
       # @param  content [String] the content of the rule
       # @param  private [Boolean]
       def self.build(content, private = false)
-        new(value: content.to_s[2..-1], private: private)
+        new(content.to_s[2..-1], nil, private)
       end
 
       # Initializes a new rule.
@@ -230,7 +230,7 @@ module PublicSuffix
       # @param  value [String]
       # @param  private [Boolean]
       def initialize(value, length = nil, private = false)
-        super(value: value, length: length, private: private)
+        super(value, length, private)
         length or @length += 1 # * counts as 1
       end
 
@@ -269,7 +269,7 @@ module PublicSuffix
       # @param  content [String] the content of the rule
       # @param  private [Boolean]
       def self.build(content, private = false)
-        new(value: content.to_s[1..-1], private: private)
+        new(content.to_s[1..-1], nil, private)
       end
 
       # Gets the original rule definition.
@@ -331,7 +331,7 @@ module PublicSuffix
         Exception
       else
         Normal
-      end.build(content, private: private)
+      end.build(content, private)
     end
 
     # The default rule to use if no rule match.

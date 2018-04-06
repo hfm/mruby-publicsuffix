@@ -46,7 +46,11 @@ module PublicSuffix
     #
     # @return [PublicSuffix::List]
     def self.default(options = {})
-      @default ||= parse(File.read(DEFAULT_LIST_PATH), options[:private_domains])
+      if options.has_key?(:private_domains)
+        @default ||= parse(File.read(DEFAULT_LIST_PATH), options[:private_domains])
+      else
+        @default ||= parse(File.read(DEFAULT_LIST_PATH))
+      end
     end
 
     # Sets the default rule list to +value+.
@@ -88,7 +92,7 @@ module PublicSuffix
             next
 
           else
-            list.add(Rule.factory(line, private: section == 2))
+            list.add(Rule.factory(line, section == 2))
 
           end
         end
@@ -167,8 +171,8 @@ module PublicSuffix
     # @param  name [#to_s] the hostname
     # @param  default [PublicSuffix::Rule::*] the default rule to return in case no rule matches
     # @return [PublicSuffix::Rule::*]
-    def find(name, default = default_rule, options = {})
-      rule = select(name, options.fetch(:ignore_private)).inject do |l, r|
+    def find(name, default = default_rule, ignore_private = false)
+      rule = select(name, ignore_private).inject do |l, r|
         return r if r.class == Rule::Exception
         l.length > r.length ? l : r
       end
@@ -232,7 +236,7 @@ module PublicSuffix
     private
 
     def entry_to_rule(entry, value)
-      entry.type.new(value: value, length: entry.length, private: entry.private)
+      entry.type.new(value, entry.length, entry.private)
     end
 
     def rule_to_entry(rule)

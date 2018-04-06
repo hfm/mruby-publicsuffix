@@ -62,7 +62,7 @@ module PublicSuffix
     what = normalize(name)
     raise what if what.is_a?(DomainInvalid)
 
-    rule = list.find(what, default: default_rule, ignore_private: ignore_private)
+    rule = list.find(what, default_rule, ignore_private)
 
     # rubocop:disable Style/IfUnlessModifier
     if rule.nil?
@@ -117,7 +117,7 @@ module PublicSuffix
     what = normalize(name)
     return false if what.is_a?(DomainInvalid)
 
-    rule = list.find(what, default: default_rule, ignore_private: ignore_private)
+    rule = list.find(what, default_rule, ignore_private)
 
     !rule.nil? && !rule.decompose(what).last.nil?
   end
@@ -131,6 +131,10 @@ module PublicSuffix
   # @param  [Boolean] ignore_private
   # @return [String]
   def self.domain(name, options = {})
+    options[:list]           ||= List.default
+    options[:default_rule]   ||= options[:list].default_rule
+    options[:ignore_private] ||= false
+
     parse(name, options[:list], options[:default_rule], options[:ignore_private]).domain
   rescue PublicSuffix::Error
     nil

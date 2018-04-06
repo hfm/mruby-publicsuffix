@@ -7,7 +7,7 @@ class PublicSuffixTest < MTest::Unit::TestCase
 
   def test_private_domains_disable
     data = File.read(PublicSuffix::List::DEFAULT_LIST_PATH)
-    PublicSuffix::List.default = PublicSuffix::List.parse(data, private_domains: false)
+    PublicSuffix::List.default = PublicSuffix::List.parse(data, false)
     domain = PublicSuffix.parse("www.example.blogspot.com")
     assert_equal "com", domain.tld
   ensure
@@ -69,7 +69,7 @@ class PublicSuffixTest < MTest::Unit::TestCase
     list = PublicSuffix::List.new
     list << PublicSuffix::Rule.factory("test")
 
-    domain = PublicSuffix.parse("www.example.test", list: list)
+    domain = PublicSuffix.parse("www.example.test", list)
     assert_instance_of PublicSuffix::Domain, domain
     assert_equal "test",    domain.tld
     assert_equal "example", domain.sld
