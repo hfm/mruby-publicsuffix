@@ -57,10 +57,10 @@ class PublicSuffix::RuleBaseTest < MTest::Unit::TestCase
   # rubocop:disable Style/SingleLineMethods
   def test_equality_with_internals
     assert_equal @klass.new(value: "foo"), @klass.new(value: "foo")
-    refute_equal @klass.new(value: "foo"), @klass.new(value: "bar")
-    refute_equal @klass.new(value: "foo"), PublicSuffix::Rule::Test.new(value: "foo")
-    refute_equal @klass.new(value: "foo"), PublicSuffix::Rule::Test.new(value: "bar")
-    refute_equal @klass.new(value: "foo"), Class.new { def name; foo; end }.new
+    assert_not_equal @klass.new(value: "foo"), @klass.new(value: "bar")
+    assert_not_equal @klass.new(value: "foo"), PublicSuffix::Rule::Test.new(value: "foo")
+    assert_not_equal @klass.new(value: "foo"), PublicSuffix::Rule::Test.new(value: "bar")
+    assert_not_equal @klass.new(value: "foo"), Class.new { def name; foo; end }.new
   end
   # rubocop:enable Style/SingleLineMethods
 
@@ -104,11 +104,11 @@ class PublicSuffix::RuleBaseTest < MTest::Unit::TestCase
 
 
   def test_parts
-    assert_raises(NotImplementedError) { @klass.new(value: "com").parts }
+    assert_raise(NotImplementedError) { @klass.new(value: "com").parts }
   end
 
   def test_decompose
-    assert_raises(NotImplementedError) { @klass.new(value: "com").decompose("google.com") }
+    assert_raise(NotImplementedError) { @klass.new(value: "com").decompose("google.com") }
   end
 
 end

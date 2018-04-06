@@ -173,12 +173,12 @@ LIST
     PublicSuffix::List.default = nil
     assert_nil(PublicSuffix::List.class_eval { @default })
     PublicSuffix::List.default
-    refute_nil(PublicSuffix::List.class_eval { @default })
+    assert(!(PublicSuffix::List.class_eval { @default }.nil?))
   end
 
   def test_self_default_setter
     PublicSuffix::List.default
-    refute_nil(PublicSuffix::List.class_eval { @default })
+    assert(!(PublicSuffix::List.class_eval { @default }.nil?))
     PublicSuffix::List.default = nil
     assert_nil(PublicSuffix::List.class_eval { @default })
   end

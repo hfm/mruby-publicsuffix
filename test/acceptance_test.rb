@@ -38,7 +38,7 @@ class AcceptanceTest < MTest::Unit::TestCase
 
   def test_invalid
     INVALID_CASES.each do |(name, error)|
-      assert_raises(error) { PublicSuffix.parse(name) }
+      assert_raise(error) { PublicSuffix.parse(name) }
       assert !PublicSuffix.valid?(name)
     end
   end

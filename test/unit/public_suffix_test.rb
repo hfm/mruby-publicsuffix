@@ -85,12 +85,12 @@ class PublicSuffixTest < MTest::Unit::TestCase
   end
 
   def test_self_parse_with_unallowed_domain
-    error = assert_raises(PublicSuffix::DomainNotAllowed) { PublicSuffix.parse("example.bd") }
+    error = assert_raise(PublicSuffix::DomainNotAllowed) { PublicSuffix.parse("example.bd") }
     assert_match(/example\.bd/, error.message)
   end
 
   def test_self_parse_with_uri
-    error = assert_raises(PublicSuffix::DomainInvalid) { PublicSuffix.parse("http://google.com") }
+    error = assert_raise(PublicSuffix::DomainInvalid) { PublicSuffix.parse("http://google.com") }
     assert_match(%r{http://google\.com}, error.message)
   end
 
