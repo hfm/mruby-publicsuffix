@@ -1,4 +1,7 @@
 # mruby-publicsuffix   [![Build Status](https://travis-ci.org/hfm/mruby-publicsuffix.svg?branch=master)](https://travis-ci.org/hfm/mruby-publicsuffix)
+
+[Public Suffix List](https://publicsuffix.org/) for mruby. The purpose of this project is  mruby port of [publicsuffix-ruby](https://github.com/weppos/publicsuffix-ruby).
+
 PublicSuffix class
 ## install by mrbgems
 - add conf.gem line to `build_config.rb`
