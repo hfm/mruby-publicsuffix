@@ -2,6 +2,10 @@
 
 [Public Suffix List](https://publicsuffix.org/) for mruby. The purpose of this project is mruby port of [publicsuffix-ruby](https://github.com/weppos/publicsuffix-ruby).
 
+## Requirements
+
+- mruby >= 1.3.0
+
 ## Installation
 
 You can add conf.gem line to `build_config.rb`:
