@@ -18,17 +18,16 @@ MRuby::Build.new do |conf|
     conf.gem :github => 'hfm/mruby-publicsuffix'
 end
 ```
-## example
-```ruby
-p PublicSuffix.hi
-#=> "hi!!"
-t = PublicSuffix.new "hello"
-p t.hello
-#=> "hello"
-p t.bye
-#=> "hello bye"
-```
+
+## Usage
+
+### IMPORTANT
+
+## Fully Qualified Domain Names
+
+## Private domains
 
 ## License
+
 under the MIT License:
 - see LICENSE file
