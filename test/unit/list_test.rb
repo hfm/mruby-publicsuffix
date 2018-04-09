@@ -8,12 +8,10 @@ class PublicSuffix::ListTest < MTest::Unit::TestCase
     PublicSuffix::List.default = nil
   end
 
-
   def test_initialize
     assert_instance_of PublicSuffix::List, @list
     assert_equal 0, @list.size
   end
-
 
   def test_equality_with_self
     list = PublicSuffix::List.new
@@ -48,7 +46,6 @@ LIST
     assert_equal 2, entries.count
     assert_equal PublicSuffix::Rule.factory("alpha"), entries.first
   end
-
 
   def test_add
     assert_equal @list, @list.add(PublicSuffix::Rule.factory("foo"))
@@ -85,7 +82,6 @@ LIST
     assert_equal @list, @list.clear
     assert_equal 0, @list.size
   end
-
 
   def test_find
     list = PublicSuffix::List.parse(<<LIST)
@@ -139,7 +135,6 @@ LIST
     assert_equal PublicSuffix::Rule.factory("blogspot.com", true), list.find("foo.blogspot.com")
   end
 
-
   def test_select
     assert_equal 2, list.send(:select, "british-library.uk").size
   end
@@ -167,7 +162,6 @@ LIST
     assert_equal list.send(:select, "example.io", true), [r1]
     assert_equal list.send(:select, "foo.example.io", true), [r1]
   end
-
 
   def test_self_default_getter
     PublicSuffix::List.default = nil
@@ -217,7 +211,6 @@ LIST
     assert_equal false, list.find("com").private
     assert_equal true,  list.find("blogspot.com").private
   end
-
 
   private
 

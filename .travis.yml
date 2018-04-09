@@ -17,6 +17,8 @@ before_install:
   - sudo apt-get -qq update
 install:
   - sudo apt-get -qq install rake bison git gperf libonig-dev
+  - gem install rubocop --no-document
 
 script:
+  - rubocop
   - rake test

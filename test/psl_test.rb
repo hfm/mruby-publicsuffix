@@ -23,7 +23,6 @@ class PslTest < MTest::Unit::TestCase
   end
   # rubocop:enable Security/Eval
 
-
   def test_valid
     # Parse the PSL and run the tests
     data = File.read(PublicSuffix::List::DEFAULT_LIST_PATH)

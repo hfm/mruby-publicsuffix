@@ -18,7 +18,6 @@ class PublicSuffix::DomainTest < MTest::Unit::TestCase
                   PublicSuffix::Domain.name_to_labels(:"someone.spaces.live.com")
   end
 
-
   def test_initialize_with_tld
     domain = @klass.new("com")
     assert_equal "com", domain.tld
@@ -40,7 +39,6 @@ class PublicSuffix::DomainTest < MTest::Unit::TestCase
     assert_equal "www", domain.trd
   end
 
-
   def test_to_s
     assert_equal "com",             @klass.new("com").to_s
     assert_equal "google.com",      @klass.new("com", "google").to_s
@@ -53,7 +51,6 @@ class PublicSuffix::DomainTest < MTest::Unit::TestCase
     assert_equal ["www", "google", "com"],  @klass.new("com", "google", "www").to_a
   end
 
-
   def test_tld
     assert_equal "com", @klass.new("com", "google", "www").tld
   end
@@ -65,7 +62,6 @@ class PublicSuffix::DomainTest < MTest::Unit::TestCase
   def test_trd
     assert_equal "www", @klass.new("com", "google", "www").trd
   end
-
 
   def test_name
     assert_equal "com",             @klass.new("com").name
@@ -90,7 +86,6 @@ class PublicSuffix::DomainTest < MTest::Unit::TestCase
     assert_equal "www.google.com", @klass.new("com", "google", "www").subdomain
     assert_equal "www.google.tldnotlisted", @klass.new("tldnotlisted", "google", "www").subdomain
   end
-
 
   def test_domain_question
     assert !@klass.new("com").domain?

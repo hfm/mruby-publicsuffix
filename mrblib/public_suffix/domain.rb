@@ -27,7 +27,6 @@ module PublicSuffix
       name.to_s.split(DOT)
     end
 
-
     attr_reader :tld, :sld, :trd
 
     # Creates and returns a new {PublicSuffix::Domain} instance.

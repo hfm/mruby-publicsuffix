@@ -140,7 +140,6 @@ module PublicSuffix
     nil
   end
 
-
   # private
 
   def self.decompose(name, rule)
