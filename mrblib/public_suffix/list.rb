@@ -99,7 +99,6 @@ module PublicSuffix
       end
     end
 
-
     # Initializes an empty {PublicSuffix::List}.
     #
     # @yield [self] Yields on self.
@@ -108,7 +107,6 @@ module PublicSuffix
       @rules = {}
       yield(self) if block_given?
     end
-
 
     # Checks whether two lists are equal.
     #
@@ -132,7 +130,6 @@ module PublicSuffix
         end
       end.each(&block)
     end
-
 
     # Adds the given object to the list and optionally refreshes the rule index.
     #
@@ -225,11 +222,9 @@ module PublicSuffix
       PublicSuffix::Rule.default
     end
 
-
     protected
 
     attr_reader :rules
-
 
     private
 

@@ -14,7 +14,6 @@ class PublicSuffixTest < MTest::Unit::TestCase
     PublicSuffix::List.default = nil
   end
 
-
   def test_self_parse_a_domain_with_tld_and_sld
     domain = PublicSuffix.parse("example.com")
     assert_instance_of PublicSuffix::Domain, domain
@@ -94,7 +93,6 @@ class PublicSuffixTest < MTest::Unit::TestCase
     assert_match(%r{http://google\.com}, error.message)
   end
 
-
   def test_self_valid
     assert  PublicSuffix.valid?("google.com")
     assert  PublicSuffix.valid?("www.google.com")
@@ -112,7 +110,6 @@ class PublicSuffixTest < MTest::Unit::TestCase
   #   assert  PublicSuffix.valid?("google.co.uk.")
   #   assert !PublicSuffix.valid?("google.tldnotlisted.")
   # end
-
 
   def test_self_domain
     assert_equal "google.com",    PublicSuffix.domain("google.com")
@@ -133,7 +130,6 @@ class PublicSuffixTest < MTest::Unit::TestCase
     assert_nil PublicSuffix.domain("com")
     assert_nil PublicSuffix.domain(".com")
   end
-
 
   def test_self_normalize
     [

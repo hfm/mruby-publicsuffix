@@ -108,7 +108,6 @@ module PublicSuffix
       # @return [Boolean] true if the rule is a private domain
       attr_reader :private
 
-
       # Initializes a new rule from the content.
       #
       # @param  content [String] the content of the rule
@@ -303,7 +302,6 @@ module PublicSuffix
       end
 
     end
-
 
     # Takes the +name+ of the rule, detects the specific rule class
     # and creates a new instance of that class.

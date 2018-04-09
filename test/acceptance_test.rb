@@ -28,7 +28,6 @@ class AcceptanceTest < MTest::Unit::TestCase
     end
   end
 
-
   INVALID_CASES = [
       ["nic.bd",                  PublicSuffix::DomainNotAllowed],
       [nil,                       PublicSuffix::DomainInvalid],
@@ -42,7 +41,6 @@ class AcceptanceTest < MTest::Unit::TestCase
       assert !PublicSuffix.valid?(name)
     end
   end
-
 
   REJECTED_CASES = [
       ["www. .com",           true],
@@ -66,7 +64,6 @@ class AcceptanceTest < MTest::Unit::TestCase
     end
   end
 
-
   CASE_CASES = [
       ["Www.google.com", %w( www google com )],
       ["www.Google.com", %w( www google com )],
@@ -83,7 +80,6 @@ class AcceptanceTest < MTest::Unit::TestCase
       assert PublicSuffix.valid?(name)
     end
   end
-
 
   INCLUDE_PRIVATE_CASES = [
       ["blogspot.com", true, "blogspot.com"],
@@ -107,7 +103,6 @@ class AcceptanceTest < MTest::Unit::TestCase
       assert_equal !expected.nil?, PublicSuffix.valid?(given, list, list.default_rule, ignore_private)
     end
   end
-
 
   def valid_uri?(name)
     uri = URI.parse(name)

@@ -21,7 +21,6 @@ class PublicSuffix::RuleTest < MTest::Unit::TestCase
     assert_instance_of PublicSuffix::Rule::Wildcard, rule
   end
 
-
   def test_default_returns_default_wildcard
     default = PublicSuffix::Rule.default
     assert_equal PublicSuffix::Rule::Wildcard.build("*"), default
@@ -30,7 +29,6 @@ class PublicSuffix::RuleTest < MTest::Unit::TestCase
   end
 
 end
-
 
 class PublicSuffix::RuleBaseTest < MTest::Unit::TestCase
 
@@ -41,13 +39,11 @@ class PublicSuffix::RuleBaseTest < MTest::Unit::TestCase
     @klass = PublicSuffix::Rule::Base
   end
 
-
   def test_initialize
     rule = @klass.new("verona.it")
     assert_instance_of @klass,  rule
     assert_equal "verona.it",   rule.value
   end
-
 
   def test_equality_with_self
     rule = PublicSuffix::Rule::Base.new("foo")
@@ -102,7 +98,6 @@ class PublicSuffix::RuleBaseTest < MTest::Unit::TestCase
     end
   end
 
-
   def test_parts
     assert_raise(NotImplementedError) { @klass.new("com").parts }
   end
@@ -113,13 +108,11 @@ class PublicSuffix::RuleBaseTest < MTest::Unit::TestCase
 
 end
 
-
 class PublicSuffix::RuleNormalTest < MTest::Unit::TestCase
 
   def setup
     @klass = PublicSuffix::Rule::Normal
   end
-
 
   def test_build
     rule = @klass.build("verona.it")
@@ -127,7 +120,6 @@ class PublicSuffix::RuleNormalTest < MTest::Unit::TestCase
     assert_equal "verona.it",               rule.value
     assert_equal "verona.it",               rule.rule
   end
-
 
   def test_length
     assert_equal 1, @klass.build("com").length
@@ -149,13 +141,11 @@ class PublicSuffix::RuleNormalTest < MTest::Unit::TestCase
 
 end
 
-
 class PublicSuffix::RuleExceptionTest < MTest::Unit::TestCase
 
   def setup
     @klass = PublicSuffix::Rule::Exception
   end
-
 
   def test_initialize
     rule = @klass.build("!british-library.uk")
@@ -163,7 +153,6 @@ class PublicSuffix::RuleExceptionTest < MTest::Unit::TestCase
     assert_equal "british-library.uk", rule.value
     assert_equal "!british-library.uk", rule.rule
   end
-
 
   def test_length
     assert_equal 2, @klass.build("!british-library.uk").length
@@ -183,13 +172,11 @@ class PublicSuffix::RuleExceptionTest < MTest::Unit::TestCase
 
 end
 
-
 class PublicSuffix::RuleWildcardTest < MTest::Unit::TestCase
 
   def setup
     @klass = PublicSuffix::Rule::Wildcard
   end
-
 
   def test_initialize
     rule = @klass.build("*.aichi.jp")
@@ -197,7 +184,6 @@ class PublicSuffix::RuleWildcardTest < MTest::Unit::TestCase
     assert_equal "aichi.jp", rule.value
     assert_equal "*.aichi.jp", rule.rule
   end
-
 
   def test_length
     assert_equal 2, @klass.build("*.uk").length
