@@ -2,6 +2,10 @@
 
 [Public Suffix List](https://publicsuffix.org/) for mruby. The purpose of this project is mruby port of [publicsuffix-ruby](https://github.com/weppos/publicsuffix-ruby).
 
+#### NOTE
+
+mruby-publicsuffix aims at porting from publicsuffix-ruby, but there's some differences, so it cannot provide totally the same functionality.
+
 ## Requirements
 
 - mruby >= 1.3.0
@@ -18,10 +22,6 @@ MRuby::Build.new do |conf|
     conf.gem :github => 'hfm/mruby-publicsuffix'
 end
 ```
-
-#### NOTE
-
-mruby-publicsuffix aims at porting from publicsuffix-ruby, but there's some differences, so it cannot provide totally the same functionality.
 
 ## PublicSuffix class methods
 
