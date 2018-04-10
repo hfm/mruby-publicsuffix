@@ -21,11 +21,64 @@ end
 
 ## Usage
 
-### IMPORTANT
+#### NOTE
 
-## Fully Qualified Domain Names
+mruby-publicsuffix aims at porting from publicsuffix-ruby, but there's some differences, so it cannot provide totally the same functionality.
 
-## Private domains
+### PublicSuffix class methods
+
+#### PublicSuffix.domain
+
+`PublicSuffix.domain` extracts the domain out from a given name and returns it as String class.
+
+```rb
+PublicSuffix.domain('google.com')
+# => "google.com"
+```
+
+If given a domain with subdomains, returning the domain.
+
+```rb
+PublicSuffix.domain('www.google.com')
+# => "google.com"
+PublicSuffix.domain('www.google.co.uk')
+# => "google.co.uk"
+```
+
+#### PublicSuffix.parse
+
+`PublicSuffix.parse` parses a domain and returns an object of `PublicSuffix::Domain` class. This method support a domain with subdomains.
+
+```rb
+domain = PublicSuffix.parse('www.google.com')
+# => #<PublicSuffix::Domain:0x7fa3bf84c9b0>
+```
+
+#### PublicSuffix.valid?
+
+Checks whether a given domain is assigned and allowed, without actually parsing it. This method doesn't care whether domain is a domain or subdomain. The validation is performed using the default [`PublicSuffix::List`](#publicsuffix-list).
+
+Simple validation example:
+
+```rb
+PublicSuffix.valid?("google.com")
+# => true
+
+# Explicitly forbidden, it is listed as a private domain
+> PublicSuffix.valid?("blogspot.com")
+# => false
+
+# Unknown/not-listed TLD domains are valid by default
+> PublicSuffix.valid?("example.tldnotlisted")
+# => true
+```
+
+Strict validation (without applying the default * rule):
+
+```ruby
+> PublicSuffix.valid?("example.tldnotlisted", PublicSuffix::List.default, nil)
+# => false
+```
 
 ## License
 
