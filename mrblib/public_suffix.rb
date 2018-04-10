@@ -41,7 +41,7 @@ module PublicSuffix
   #   # => #<PublicSuffix::Domain:0x007fec2f49bec0 @sld="x", @tld="yz", @trd=nil>
   #
   # @example Parse an invalid (unlisted) domain with strict checking (without applying the default * rule)
-  #   PublicSuffix.parse("x.yz", default_rule: nil)
+  #   PublicSuffix.parse("x.yz", PublicSuffix::List.default, nil)
   #   # => PublicSuffix::DomainInvalid: `x.yz` is not a valid domain
   #
   # @example Parse an URL (not supported, only domains)
@@ -96,7 +96,7 @@ module PublicSuffix
   # @example Validate a not-listed domain with strict checking (without applying the default * rule)
   #   PublicSuffix.valid?("example.tldnotlisted")
   #   # => true
-  #   PublicSuffix.valid?("example.tldnotlisted", default_rule: nil)
+  #   PublicSuffix.valid?("example.tldnotlisted", PublicSuffix::List.default, nil)
   #   # => false
   #
   # @example Validate a fully qualified domain
