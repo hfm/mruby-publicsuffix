@@ -19,15 +19,13 @@ MRuby::Build.new do |conf|
 end
 ```
 
-## Usage
-
 #### NOTE
 
 mruby-publicsuffix aims at porting from publicsuffix-ruby, but there's some differences, so it cannot provide totally the same functionality.
 
-### PublicSuffix class methods
+## PublicSuffix class methods
 
-#### PublicSuffix.domain
+### PublicSuffix.domain
 
 `PublicSuffix.domain` extracts the domain out from a given name and returns it as String class.
 
@@ -52,7 +50,7 @@ PublicSuffix.domain("www.google.com.")
 # => "google.com"
 ```
 
-#### PublicSuffix.parse
+### PublicSuffix.parse
 
 `PublicSuffix.parse` parses a domain and returns an object of `PublicSuffix::Domain` class. This method support a domain with subdomains.
 
@@ -61,7 +59,7 @@ domain = PublicSuffix.parse('www.google.com')
 # => #<PublicSuffix::Domain:0x7fa3bf84c9b0>
 ```
 
-#### PublicSuffix.valid?
+### PublicSuffix.valid?
 
 Checks whether a given domain is assigned and allowed, without actually parsing it. This method doesn't care whether domain is a domain or subdomain. The validation is performed using the default [`PublicSuffix::List`](#publicsuffix-list).
 
