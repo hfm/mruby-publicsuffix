@@ -45,6 +45,13 @@ PublicSuffix.domain('www.google.co.uk')
 # => "google.co.uk"
 ```
 
+This library automatically recognizes FQDN (Fully Qualified Domain Names). A FQDN is a domain name that end with a trailing dot.
+
+```rb
+PublicSuffix.domain("www.google.com.")
+# => "google.com"
+```
+
 #### PublicSuffix.parse
 
 `PublicSuffix.parse` parses a domain and returns an object of `PublicSuffix::Domain` class. This method support a domain with subdomains.
