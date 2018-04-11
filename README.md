@@ -19,7 +19,7 @@ MRuby::Build.new do |conf|
 
     # ... (snip) ...
 
-    conf.gem :github => 'hfm/mruby-publicsuffix'
+    conf.gem mgem: 'mruby-publicsuffix'
 end
 ```
 
