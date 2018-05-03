@@ -1,7 +1,17 @@
+sudo: false
+dist: trusty
 language: c
 compiler:
   - gcc
   - clang
+addons:
+  apt:
+    packages:
+      - rake
+      - bison
+      - git
+      - gperf
+      - libonig-dev
 env:
   - MRUBY_VERSION=1.3.0
   - MRUBY_VERSION=1.4.1
@@ -13,10 +23,7 @@ branches:
   only:
     - master
 
-before_install:
-  - sudo apt-get -qq update
 install:
-  - sudo apt-get -qq install rake bison git gperf libonig-dev
   - gem install rubocop --no-document
 
 script:
